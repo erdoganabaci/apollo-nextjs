@@ -1,0 +1,90 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteModel",
+      "model": "Category"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "hospitals",
+      "type": "Hospital",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Hospital",
+      "field": "User",
+      "type": "User",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Hospital",
+          "field": "User"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Hospital",
+          "field": "User"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Hospital",
+          "field": "User"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Hospital",
+      "field": "userId",
+      "type": "Int",
+      "arity": "Optional"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Hospital",
+      "field": "categoryId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Hospital",
+      "field": "address"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Hospital",
+      "field": "category"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Hospital",
+      "field": "name",
+      "arity": "Required"
+    }
+  ]
+}
