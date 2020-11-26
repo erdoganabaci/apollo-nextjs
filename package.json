@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
     "studio": "npx prisma studio --experimental",
     "save-migrate": "npx prisma migrate save --experimental",
     "migrate": "npx prisma migrate up --experimental",
