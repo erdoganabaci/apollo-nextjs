@@ -38,7 +38,10 @@ const Hospital = ({ hospital }) => (
     <a>
       <h2>{hospital.name}</h2>
       <small>By {hospital.user ? hospital.user.name : "Unknown User"}</small>
-      <p>{hospital.id}</p>
+
+      <p>{hospital.user.email}</p>
+      {/* <p>{hospital.user.id}</p> */}
+
       <style jsx>{`
         a {
           text-decoration: none;

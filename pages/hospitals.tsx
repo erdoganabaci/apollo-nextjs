@@ -34,12 +34,12 @@ query {
 `
 
 const Hospital = ({ hospital }) => (
-    <Link href="/h/[id]" as={`/h/${hospital.id}`}>
-        <a>
-            <h2>{hospital.name}</h2>
-            <small>By {hospital.user ? hospital.user.name : "Unknown User"}</small>
-            <p>{hospital.id}</p>
-            <style jsx>{`
+  <Link href="/h/[id]" as={`/h/${hospital.id}`}>
+    <a>
+      <h2>{hospital.name}</h2>
+      <small>By {hospital.user ? hospital.user.name : "Unknown User"}</small>
+      <p>{hospital.id}</p>
+      <style jsx>{`
         a {
           text-decoration: none;
           color: inherit;
@@ -47,33 +47,33 @@ const Hospital = ({ hospital }) => (
           display: block;
         }
       `}</style>
-        </a>
-    </Link>
+    </a>
+  </Link>
 )
 
 const hospitals = () => {
-    const { loading, error, data } = useQuery(hospitalsQuery)
+  const { loading, error, data } = useQuery(hospitalsQuery)
 
-    if (loading) {
-        return <div>Loading ...</div>
-    }
-    if (error) {
-        return <div>Error: {error.message}</div>
-    }
+  if (loading) {
+    return <div>Loading ...</div>
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
-    return (
-        <Layout>
-            <div className="page">
-                <h1>Hospitals</h1>
-                <main>
-                    {data.getHospitals.map((hospital) => (
-                        <div key={hospital.id} className="hospital">
-                            <Hospital hospital={hospital} />
-                        </div>
-                    ))}
-                </main>
+  return (
+    <Layout>
+      <div className="page">
+        <h1>Hospitals</h1>
+        <main>
+          {data.getHospitals.map((hospital) => (
+            <div key={hospital.id} className="hospital">
+              <Hospital hospital={hospital} />
             </div>
-            <style jsx>{`
+          ))}
+        </main>
+      </div>
+      <style jsx>{`
         .hospital {
           background: white;
           transition: box-shadow 0.1s ease-in;
@@ -87,8 +87,8 @@ const hospitals = () => {
           margin-top: 2rem;
         }
       `}</style>
-        </Layout>
-    )
+    </Layout>
+  )
 }
 
 export default withApollo(hospitals)

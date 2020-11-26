@@ -189,6 +189,19 @@ const Mutation = objectType({
       },
     })
 
+    t.field('deleteHospital', {
+      type: 'Hospital',
+      nullable: true,
+      args: {
+        hospitalId: stringArg({ nullable: false }),
+      },
+      resolve: (_, { hospitalId }, ctx) => {
+        return prisma.hospital.delete({
+          where: { id: Number(hospitalId) },
+        })
+      },
+    })
+
     t.field('createDraft', {
       type: 'Post',
       args: {
@@ -242,6 +255,30 @@ const Mutation = objectType({
         })
       },
     })
+
+    t.field('updateHospital', {
+      type: 'Hospital',
+      nullable: true,
+      args: {
+        hospitalId: stringArg(),
+        name: stringArg({ nullable: false }),
+        userEmail: stringArg(),
+
+
+      },
+      resolve: (_, { hospitalId, name, userEmail }, ctx) => {
+        return prisma.hospital.update({
+          where: { id: Number(hospitalId,) },
+          data: {
+            name,
+            user: {
+              connect: { email: userEmail },
+            },
+          },
+        })
+      },
+    })
+
   },
 })
 

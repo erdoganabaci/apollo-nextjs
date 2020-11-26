@@ -16,9 +16,11 @@ type Hospital {
 type Mutation {
   createDraft(authorEmail: String, content: String, title: String!): Post
   createHospital(name: String!, userEmail: String): Hospital
+  deleteHospital(hospitalId: String!): Hospital
   deletePost(postId: String): Post
   publish(postId: String): Post
   signupUser(email: String!, name: String): User
+  updateHospital(hospitalId: String, name: String!, userEmail: String): Hospital
 }
 
 type Post {

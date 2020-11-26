@@ -41,61 +41,63 @@ mutation($name: String!, $userEmail: String) {
 
 
 function Hospital(props) {
-    const [name, setName] = useState("")
-    const [userEmail, setUserEmail] = useState("")
+  const [name, setName] = useState("")
+  const [userEmail, setUserEmail] = useState("")
 
-    const [createHospital, { loading, error, data }] = useMutation(
-        createHospitalMutation
-    )
+  const [createHospital, { loading, error, data }] = useMutation(
+    createHospitalMutation
+  )
 
-    return (
-        <Layout>
-            <div>
-                <form
-                    onSubmit={async (e) => {
-                        e.preventDefault()
 
-                        await createHospital({
-                            variables: {
-                                name,
-                                userEmail,
-                            },
-                        })
-                        Router.push("/hospitals")
-                    }}
-                >
-                    <h1>Create Hospital</h1>
-                    <input
-                        autoFocus
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Hospital Name"
-                        type="text"
-                        value={name}
-                    />
-                    <input
-                        onChange={(e) => setUserEmail(e.target.value)}
-                        placeholder="User (email adress)"
-                        type="text"
-                        value={userEmail}
-                    />
-                    {/* <textarea
+
+  return (
+    <Layout>
+      <div>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault()
+
+            await createHospital({
+              variables: {
+                name,
+                userEmail,
+              },
+            })
+            Router.push("/hospitals")
+          }}
+        >
+          <h1>Create Hospital</h1>
+          <input
+            autoFocus
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Hospital Name"
+            type="text"
+            value={name}
+          />
+          <input
+            onChange={(e) => setUserEmail(e.target.value)}
+            placeholder="User (email adress)"
+            type="text"
+            value={userEmail}
+          />
+          {/* <textarea
                         cols={50}
                         onChange={(e) => setContent(e.target.value)}
                         placeholder="Content"
                         rows={8}
                         value={content}
                     /> */}
-                    <input
-                        disabled={!name || !userEmail}
-                        type="submit"
-                        value="Create"
-                    />
-                    <a className="back" href="#" onClick={() => Router.push("/hospitals")}>
-                        or Cancel
+          <input
+            disabled={!name || !userEmail}
+            type="submit"
+            value="Create"
+          />
+          <a className="back" href="#" onClick={() => Router.push("/hospitals")}>
+            or Cancel
           </a>
-                </form>
-            </div>
-            <style jsx>{`
+        </form>
+      </div>
+      <style jsx>{`
         .page {
           background: white;
           padding: 3rem;
@@ -123,8 +125,8 @@ function Hospital(props) {
           margin-left: 1rem;
         }
       `}</style>
-        </Layout>
-    )
+    </Layout>
+  )
 }
 
 export default withApollo(Hospital)

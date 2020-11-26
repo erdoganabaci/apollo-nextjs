@@ -74,9 +74,11 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createDraft: NexusGenRootTypes['Post'] | null; // Post
     createHospital: NexusGenRootTypes['Hospital'] | null; // Hospital
+    deleteHospital: NexusGenRootTypes['Hospital'] | null; // Hospital
     deletePost: NexusGenRootTypes['Post'] | null; // Post
     publish: NexusGenRootTypes['Post'] | null; // Post
     signupUser: NexusGenRootTypes['User'] | null; // User
+    updateHospital: NexusGenRootTypes['Hospital'] | null; // Hospital
   }
   Post: { // field return type
     author: NexusGenRootTypes['User'] | null; // User
@@ -110,9 +112,11 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createDraft: 'Post'
     createHospital: 'Hospital'
+    deleteHospital: 'Hospital'
     deletePost: 'Post'
     publish: 'Post'
     signupUser: 'User'
+    updateHospital: 'Hospital'
   }
   Post: { // field return type name
     author: 'User'
@@ -148,6 +152,9 @@ export interface NexusGenArgTypes {
       name: string; // String!
       userEmail?: string | null; // String
     }
+    deleteHospital: { // args
+      hospitalId: string; // String!
+    }
     deletePost: { // args
       postId?: string | null; // String
     }
@@ -157,6 +164,11 @@ export interface NexusGenArgTypes {
     signupUser: { // args
       email: string; // String!
       name?: string | null; // String
+    }
+    updateHospital: { // args
+      hospitalId?: string | null; // String
+      name: string; // String!
+      userEmail?: string | null; // String
     }
   }
   Query: {
