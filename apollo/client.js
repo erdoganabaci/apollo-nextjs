@@ -134,7 +134,9 @@ function createApolloClient(initialState = {}) {
 function createIsomorphLink() {
   const { HttpLink } = require('apollo-link-http')
   return new HttpLink({
-    uri: 'http://localhost:3000/api',
+    // uri: 'http://localhost:3000/api',
+    uri: 'https://turkey-hospitals.vercel.app/api',
+
     credentials: 'same-origin',
   })
 }
