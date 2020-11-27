@@ -2,9 +2,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
+
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgres"
+  url      = "postgres://kxzidjxhmvtqee:2f817c59ef03413b18958f4e8c24cacc786308e22e2776682c502db2dcd06101@ec2-54-228-209-117.eu-west-1.compute.amazonaws.com:5432/dbupgd1vckrndl"
 }
 
 model User {
